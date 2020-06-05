@@ -38,7 +38,7 @@ function event:PlayerTakeRealDamage(ent, dmginfo, original_dmg)
                 [5] = math.Round(original_dmg)
             }
 
-            if Damagelog:IsTeamkill(att.role, ent.role) then
+            if Damagelog:IsTeamkill(att:GetRole(), ent:GetRole()) then
                 tbl.icon = {"icon16/exclamation.png"}
             elseif Damagelog.Time then
                 local found_dmg = false

@@ -54,11 +54,11 @@ function event:Highlight(line, tbl, text)
     return table.HasValue(Damagelog.Highlighted, tbl[1])
 end
 
-function event:GetColor(tbl)
+function event:GetColor(tbl, roles)
     if tbl[3] then
 		local ent = Damagelog:InfoFromID(roles, tbl[1])
-		local att = Damagelog:InfoFromID(roles, tbl[4])
-	
+		local att = Damagelog:InfoFromID(roles, tbl[2])
+
 		if Damagelog:IsTeamkill(att.role, ent.role) then
 			return Damagelog:GetColor("color_team_damages")
 		end
@@ -72,7 +72,7 @@ function event:RightClick(line, tbl, roles, text)
     local ply = Damagelog:InfoFromID(roles, tbl[1])
 
     if tbl[3] then
-        local att = Damagelog:InfoFromID(roles, tbl[4])
+        local att = Damagelog:InfoFromID(roles, tbl[2])
         line:ShowCopy(true, {ply.nick, util.SteamIDFrom64(ply.steamid64)}, {att.nick, util.SteamIDFrom64(att.steamid64)})
     else
         line:ShowCopy(true, {ply.nick, util.SteamIDFrom64(ply.steamid64)})
