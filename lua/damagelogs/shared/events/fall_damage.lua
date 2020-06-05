@@ -55,8 +55,13 @@ function event:Highlight(line, tbl, text)
 end
 
 function event:GetColor(tbl)
-    if tbl[5] and Damagelog:IsTeamkill(tbl[2], tbl[7]) then
-        return Damagelog:GetColor("color_team_damages")
+    if tbl[3] then
+		local ent = Damagelog:InfoFromID(roles, tbl[1])
+		local att = Damagelog:InfoFromID(roles, tbl[4])
+	
+		if Damagelog:IsTeamkill(att.role, ent.role) then
+			return Damagelog:GetColor("color_team_damages")
+		end
     else
         return Damagelog:GetColor("color_fall_damages")
     end

@@ -33,7 +33,7 @@ timer.Create("SpecDM_Recording", 0.2, 0, function()
         end
     end
 
-    for _, v in ipairs(player.GetHumans()) do
+    for _, v in ipairs(player.GetAll()) do
         if not v:IsActive() then
             local rag = v.server_ragdoll
 
